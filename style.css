@@ -160,3 +160,20 @@ body {
   padding: 18px 0;
   color: var(--muted);
 }
+
+.cards {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: white;
+}
+
+.card h3 {
+  margin-bottom: 8px;
+}
