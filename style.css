@@ -142,3 +142,24 @@ body {
   margin-bottom: 60px;
 }
 
+.section-header h2 { font-size: 2.5rem; }
+
+/* Cards & Doctors */
+.cards, .doctor-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card, .doctor-card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: 0.3s;
+}
+
+.card:hover, .doctor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow);
+}
