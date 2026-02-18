@@ -178,6 +178,21 @@ body {
   object-fit: cover;
 }
 
+.specialty {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Appointment Form */
+.appointment-box {
+  background: var(--primary);
+  color: white;
+  padding: 60px;
+  border-radius: 30px;
+  text-align: center;
+}
+
 .appointment-form {
   display: flex;
   flex-wrap: wrap;
