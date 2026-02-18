@@ -142,3 +142,45 @@ body {
   margin-bottom: 60px;
 }
 
+.section-header h2 { font-size: 2.5rem; }
+
+/* Cards & Doctors */
+.cards, .doctor-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card, .doctor-card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: 0.3s;
+}
+
+.card:hover, .doctor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow);
+}
+
+.dr-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1/1;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.dr-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.specialty {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
