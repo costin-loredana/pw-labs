@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noutati si Realizari — ORL Spitalul Republican</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2864/2864448.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { 'display': ['"Playfair Display"', 'serif'], 'body': ['"DM Sans"', 'system-ui', 'sans-serif'] } } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    #bar1, #bar2, #bar3 { transition: transform 0.3s ease, opacity 0.3s ease; }
+  </style>
+</head>
+<body class="font-body text-slate-800 bg-white">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-sky-600 flex items-center justify-center text-white font-bold text-lg shadow">H</div>
+          <div class="leading-tight">
+            <div class="font-display font-bold text-slate-800 text-sm">Spitalul Republican</div>
+            <div class="text-xs text-sky-600 font-semibold">Departamentul ORL</div>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+          <a href="index.html"   class="hover:text-sky-600 transition-colors">Acasa</a>
+          <a href="despre.html"  class="hover:text-sky-600 transition-colors">Despre</a>
+          <a href="servicii.html" class="hover:text-sky-600 transition-colors">Servicii</a>
+          <a href="noutati.html" class="text-sky-600 font-bold">Noutati</a>
+          <a href="contact.html" class="hover:text-sky-600 transition-colors">Contact</a>
+          <a href="contact.html#programare" class="bg-sky-600 hover:bg-sky-700 text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow">Programare</a>
+        </nav>
+        <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-50 transition-colors" aria-label="Deschide meniu">
+          <span class="block w-6 h-0.5 bg-slate-700 mb-1.5" id="bar1"></span>
+          <span class="block w-6 h-0.5 bg-slate-700 mb-1.5" id="bar2"></span>
+          <span class="block w-6 h-0.5 bg-slate-700" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 pb-5 shadow-lg">
+      <nav class="flex flex-col gap-1 pt-3 text-sm font-medium">
+        <a href="index.html"    class="py-3 px-3 rounded-xl hover:bg-sky-50 hover:text-sky-600 transition-colors">Acasa</a>
+        <a href="despre.html"   class="py-3 px-3 rounded-xl hover:bg-sky-50 hover:text-sky-600 transition-colors">Despre</a>
+        <a href="servicii.html" class="py-3 px-3 rounded-xl hover:bg-sky-50 hover:text-sky-600 transition-colors">Servicii</a>
+        <a href="noutati.html"  class="py-3 px-3 rounded-xl bg-sky-50 text-sky-600 font-semibold">Noutati</a>
+        <a href="contact.html"  class="py-3 px-3 rounded-xl hover:bg-sky-50 hover:text-sky-600 transition-colors">Contact</a>
+        <a href="contact.html#programare" class="mt-2 bg-sky-600 text-white text-center py-3.5 rounded-xl font-semibold">Programare rapida</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile bottom CTA -->
+  <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white border-t border-slate-200 px-4 py-3 shadow-lg">
+    <a href="contact.html#programare" class="block bg-sky-600 text-white text-center py-3.5 rounded-xl font-semibold text-sm">Fa o programare acum</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="bg-gradient-to-br from-sky-50 via-white to-blue-50 pt-10 pb-12 md:pt-16 md:pb-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-bold tracking-widest uppercase text-sky-600 mb-2">Ultimele stiri</p>
+      <h1 class="font-display text-3xl md:text-5xl font-bold text-slate-900 max-w-2xl leading-tight mb-3">Noutati si Realizari</h1>
+      <p class="text-slate-500 text-base md:text-lg max-w-xl leading-relaxed">Descoperiti realizarile departamentului nostru, conferintele la care participam si tehnologiile noi pe care le introducem.</p>
+    </div>
+  </section>
+
+  <!-- FILTER TABS -->
+  <section class="bg-white border-b border-slate-100 sticky top-[64px] md:top-[80px] z-30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex gap-2 py-3 overflow-x-auto scrollbar-hide -mx-1 px-1" id="filter-tabs">
+        <button data-filter="all"       class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full bg-sky-600 text-white transition-all">Toate</button>
+        <button data-filter="realizare" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all">Realizari</button>
+        <button data-filter="conferinta" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all">Conferinte</button>
+        <button data-filter="tehnologie" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all">Tehnologie</button>
+        <button data-filter="medic"     class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all">Medici</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS GRID -->
+  <section class="py-10 md:py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" id="news-grid">
+
+        <article data-category="realizare" class="news-card rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="h-1.5 bg-gradient-to-r from-sky-500 to-blue-500"></div>
+          <div class="p-4 md:p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold bg-sky-50 text-sky-600 px-2 py-0.5 rounded-full">Realizare spital</span>
+              <span class="text-xs text-slate-400">Ian 2025</span>
+            </div>
+            <h3 class="font-display font-bold text-base md:text-lg text-slate-900 mb-2 leading-tight">Acreditare JCI europeana pentru Departamentul ORL</h3>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed">Spitalul Republican a obtinut acreditarea JCI, recunoscuta international. Suntem primul departament ORL din Moldova cu aceasta distinctie.</p>
+            <div class="mt-3 pt-3 border-t border-slate-50">
+              <span class="text-xs text-slate-400">Echipa de management ORL</span>
+            </div>
+          </div>
+        </article>
+
+        <article data-category="conferinta" class="news-card rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+          <div class="p-4 md:p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full">Conferinta</span>
+              <span class="text-xs text-slate-400">Nov 2024</span>
+            </div>
+            <h3 class="font-display font-bold text-base md:text-lg text-slate-900 mb-2 leading-tight">Congresul European ORL — Viena 2024</h3>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed">Dr. Vlad Costin a prezentat un studiu inovator despre rinita alergica la copii, obtinand aprecierea comunitatii internationale.</p>
+            <div class="mt-3 pt-3 border-t border-slate-50">
+              <span class="text-xs text-slate-400">Dr. Vlad Costin</span>
+            </div>
+          </div>
+        </article>
+
+        <article data-category="tehnologie" class="news-card rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="h-1.5 bg-gradient-to-r from-violet-500 to-purple-500"></div>
+          <div class="p-4 md:p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold bg-violet-50 text-violet-600 px-2 py-0.5 rounded-full">Tehnologie</span>
+              <span class="text-xs text-slate-400">Oct 2024</span>
+            </div>
+            <h3 class="font-display font-bold text-base md:text-lg text-slate-900 mb-2 leading-tight">Sistem endoscopic FESS 4K introdus in sala de operatii</h3>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed">Cel mai modern sistem endoscopic pentru chirurgia sinusurilor, permitand interventii cu precizie maxima si recuperare accelerata.</p>
+            <div class="mt-3 pt-3 border-t border-slate-50">
+              <span class="text-xs text-slate-400">Departamentul de chirurgie ORL</span>
+            </div>
+          </div>
+        </article>
+
+        <article data-category="medic" class="news-card rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500"></div>
+          <div class="p-4 md:p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold bg-amber-50 text-amber-600 px-2 py-0.5 rounded-full">Realizare medic</span>
+              <span class="text-xs text-slate-400">Sep 2024</span>
+            </div>
+            <h3 class="font-display font-bold text-base md:text-lg text-slate-900 mb-2 leading-tight">Dr. Vadim Cernei — 500 de operatii FESS efectuate</h3>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed">500 de interventii endoscopice realizate cu succes, cu o rata de complicatii sub media europeana.</p>
+            <div class="mt-3 pt-3 border-t border-slate-50">
+              <span class="text-xs text-slate-400">Dr. Vadim Cernei</span>
+            </div>
+          </div>
+        </article>
+
+        <article data-category="conferinta" class="news-card rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+          <div class="p-4 md:p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full">Conferinta</span>
+              <span class="text-xs text-slate-400">Iun 2024</span>
+            </div>
+            <h3 class="font-display font-bold text-base md:text-lg text-slate-900 mb-2 leading-tight">Simpozion National ORL — Chisinau 2024</h3>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed">Primul simpozion national ORL cu participarea a 120 de specialisti din tara si din Romania.</p>
+            <div class="mt-3 pt-3 border-t border-slate-50">
+              <span class="text-xs text-slate-400">Comitetul stiintific ORL</span>
+            </div>
+          </div>
+        </article>
+
+        <article data-category="tehnologie" class="news-card rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="h-1.5 bg-gradient-to-r from-violet-500 to-purple-500"></div>
+          <div class="p-4 md:p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold bg-violet-50 text-violet-600 px-2 py-0.5 rounded-full">Tehnologie</span>
+              <span class="text-xs text-slate-400">Apr 2024</span>
+            </div>
+            <h3 class="font-display font-bold text-base md:text-lg text-slate-900 mb-2 leading-tight">Aparat audiometric digital de generatie noua</h3>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed">Audimetru Otometrics AURICAL cu capacitate de diagnosticare audiologica precisa, inclusiv pentru copii mici.</p>
+            <div class="mt-3 pt-3 border-t border-slate-50">
+              <span class="text-xs text-slate-400">Sectia de audiologie</span>
+            </div>
+          </div>
+        </article>
+
+        <article data-category="realizare" class="news-card rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="h-1.5 bg-gradient-to-r from-sky-500 to-blue-500"></div>
+          <div class="p-4 md:p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold bg-sky-50 text-sky-600 px-2 py-0.5 rounded-full">Realizare spital</span>
+              <span class="text-xs text-slate-400">Mar 2024</span>
+            </div>
+            <h3 class="font-display font-bold text-base md:text-lg text-slate-900 mb-2 leading-tight">8000 de pacienti tratati in 2023 — Record departamental</h3>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed">Record de activitate: 8.234 de pacienti tratati, cu o satisfactie raportata de 96%.</p>
+            <div class="mt-3 pt-3 border-t border-slate-50">
+              <span class="text-xs text-slate-400">Conducerea Spitalului Republican</span>
+            </div>
+          </div>
+        </article>
+
+        <article data-category="medic" class="news-card rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500"></div>
+          <div class="p-4 md:p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold bg-amber-50 text-amber-600 px-2 py-0.5 rounded-full">Realizare medic</span>
+              <span class="text-xs text-slate-400">Feb 2024</span>
+            </div>
+            <h3 class="font-display font-bold text-base md:text-lg text-slate-900 mb-2 leading-tight">Dr. Iurie Noroc — Fellow of European Board of ORL</h3>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed">Titlul de Fellow al Boardului European de Otorinolaringologie, cea mai inalta distinctie europeana in specialitate.</p>
+            <div class="mt-3 pt-3 border-t border-slate-50">
+              <span class="text-xs text-slate-400">Dr. Iurie Noroc</span>
+            </div>
+          </div>
+        </article>
+
+        <article data-category="realizare" class="news-card rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="h-1.5 bg-gradient-to-r from-sky-500 to-blue-500"></div>
+          <div class="p-4 md:p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold bg-sky-50 text-sky-600 px-2 py-0.5 rounded-full">Realizare spital</span>
+              <span class="text-xs text-slate-400">Ian 2024</span>
+            </div>
+            <h3 class="font-display font-bold text-base md:text-lg text-slate-900 mb-2 leading-tight">Spatiu de asteptare renovat si digitalizat</h3>
+            <p class="text-slate-500 text-xs md:text-sm leading-relaxed">Receptia ORL complet renovata cu sistem digital de programare si informatii pentru pacienti.</p>
+            <div class="mt-3 pt-3 border-t border-slate-50">
+              <span class="text-xs text-slate-400">Administratia spitalului</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-10 md:py-14 pb-24 md:pb-14">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div class="col-span-2">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-lg bg-sky-600 flex items-center justify-center text-white font-bold">H</div>
+            <div><div class="text-white font-semibold text-sm">Spitalul Republican</div><div class="text-sky-400 text-xs">"Timofei Mosneaga" — ORL</div></div>
+          </div>
+          <p class="text-sm leading-relaxed max-w-xs">Departament de excelenta pentru sanatatea urechilor, nasului si gatului.</p>
+        </div>
+        <div>
+          <div class="text-white font-semibold text-sm mb-3">Navigatie</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="hover:text-white transition-colors">Acasa</a></li>
+            <li><a href="despre.html" class="hover:text-white transition-colors">Despre noi</a></li>
+            <li><a href="servicii.html" class="hover:text-white transition-colors">Servicii</a></li>
+            <li><a href="noutati.html" class="hover:text-white transition-colors">Noutati</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold text-sm mb-3">Contact</div>
+          <ul class="space-y-2 text-sm">
+            <li>Str. Testemitanu 29</li>
+            <li><a href="tel:+37322000000" class="hover:text-white transition-colors">+373 22 000 000</a></li>
+            <li><a href="mailto:orl@spital.md" class="hover:text-white transition-colors">orl@spital.md</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 pt-5 text-center text-xs text-slate-600">
+        &copy; <span id="year"></span> Spitalul Republican "Timofei Mosneaga". Toate drepturile rezervate.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Filter tabs
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const newsCards  = document.querySelectorAll('.news-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-sky-600', 'text-white');
+          b.classList.add('border', 'border-slate-200', 'text-slate-600');
+        });
+        btn.classList.add('bg-sky-600', 'text-white');
+        btn.classList.remove('border', 'border-slate-200', 'text-slate-600');
+
+        const filter = btn.dataset.filter;
+        newsCards.forEach(card => {
+          card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
