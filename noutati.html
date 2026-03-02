@@ -7,6 +7,7 @@
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2864/2864448.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/orla.css" />
   <script>
     tailwind.config = {
       theme: { extend: { fontFamily: { 'display': ['"Playfair Display"', 'serif'], 'body': ['"DM Sans"', 'system-ui', 'sans-serif'] } } }
@@ -62,6 +63,13 @@
     <a href="contact.html#programare" class="block bg-sky-600 text-white text-center py-3.5 rounded-xl font-semibold text-sm">Fa o programare acum</a>
   </div>
 
+  <!-- Hidden radio inputs for filter state -->
+  <input type="radio" id="filter-all" name="news-filter" value="all" checked style="display: none;">
+  <input type="radio" id="filter-realizare" name="news-filter" value="realizare" style="display: none;">
+  <input type="radio" id="filter-conferinta" name="news-filter" value="conferinta" style="display: none;">
+  <input type="radio" id="filter-tehnologie" name="news-filter" value="tehnologie" style="display: none;">
+  <input type="radio" id="filter-medic" name="news-filter" value="medic" style="display: none;">
+
   <!-- PAGE HERO -->
   <section class="bg-gradient-to-br from-sky-50 via-white to-blue-50 pt-10 pb-12 md:pt-16 md:pb-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,11 +83,11 @@
   <section class="bg-white border-b border-slate-100 sticky top-[64px] md:top-[80px] z-30">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex gap-2 py-3 overflow-x-auto scrollbar-hide -mx-1 px-1" id="filter-tabs">
-        <button data-filter="all"       class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full bg-sky-600 text-white transition-all">Toate</button>
-        <button data-filter="realizare" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all">Realizari</button>
-        <button data-filter="conferinta" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all">Conferinte</button>
-        <button data-filter="tehnologie" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all">Tehnologie</button>
-        <button data-filter="medic"     class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all">Medici</button>
+        <label for="filter-all" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full bg-sky-600 text-white transition-all cursor-pointer">Toate</label>
+        <label for="filter-realizare" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all cursor-pointer">Realizari</label>
+        <label for="filter-conferinta" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all cursor-pointer">Conferinte</label>
+        <label for="filter-tehnologie" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all cursor-pointer">Tehnologie</label>
+        <label for="filter-medic" class="filter-btn shrink-0 text-xs font-bold px-3.5 py-2 rounded-full border border-slate-200 text-slate-600 hover:bg-sky-50 transition-all cursor-pointer">Medici</label>
       </div>
     </div>
   </section>
@@ -264,27 +272,83 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script>
-    // Filter tabs
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const newsCards  = document.querySelectorAll('.news-card');
+  <script src="assets/js/script.js"></script>
+  <style>
+    /* CSS-only filter styling - update button colors */
+    #filter-all:checked ~ section #filter-tabs [for="filter-all"],
+    #filter-realizare:checked ~ section #filter-tabs [for="filter-realizare"],
+    #filter-conferinta:checked ~ section #filter-tabs [for="filter-conferinta"],
+    #filter-tehnologie:checked ~ section #filter-tabs [for="filter-tehnologie"],
+    #filter-medic:checked ~ section #filter-tabs [for="filter-medic"] {
+      background-color: rgb(2, 132, 199);
+      color: white;
+      border-color: rgb(2, 132, 199);
+    }
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => {
-          b.classList.remove('bg-sky-600', 'text-white');
-          b.classList.add('border', 'border-slate-200', 'text-slate-600');
-        });
-        btn.classList.add('bg-sky-600', 'text-white');
-        btn.classList.remove('border', 'border-slate-200', 'text-slate-600');
+    /* Reset other button colors */
+    #filter-all:checked ~ section #filter-tabs [for]:not([for="filter-all"]),
+    #filter-realizare:checked ~ section #filter-tabs [for]:not([for="filter-realizare"]),
+    #filter-conferinta:checked ~ section #filter-tabs [for]:not([for="filter-conferinta"]),
+    #filter-tehnologie:checked ~ section #filter-tabs [for]:not([for="filter-tehnologie"]),
+    #filter-medic:checked ~ section #filter-tabs [for]:not([for="filter-medic"]) {
+      background-color: white;
+      border-color: rgb(226, 232, 240);
+      color: rgb(71, 85, 105);
+    }
 
-        const filter = btn.dataset.filter;
-        newsCards.forEach(card => {
-          card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
-        });
-      });
-    });
-  </script>
+    /* Show all by default */
+    .news-card {
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 1;
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+      display: block;
+    }
+
+    /* Filter: Realizare */
+    #filter-realizare:checked ~ section:nth-of-type(3) [data-category="conferinta"],
+    #filter-realizare:checked ~ section:nth-of-type(3) [data-category="tehnologie"],
+    #filter-realizare:checked ~ section:nth-of-type(3) [data-category="medic"] {
+      display: none;
+      visibility: hidden;
+    }
+
+    /* Filter: Conferinta */
+    #filter-conferinta:checked ~ section:nth-of-type(3) [data-category="realizare"],
+    #filter-conferinta:checked ~ section:nth-of-type(3) [data-category="tehnologie"],
+    #filter-conferinta:checked ~ section:nth-of-type(3) [data-category="medic"] {
+      display: none;
+      visibility: hidden;
+    }
+
+    /* Filter: Tehnologie */
+    #filter-tehnologie:checked ~ section:nth-of-type(3) [data-category="realizare"],
+    #filter-tehnologie:checked ~ section:nth-of-type(3) [data-category="conferinta"],
+    #filter-tehnologie:checked ~ section:nth-of-type(3) [data-category="medic"] {
+      display: none;
+      visibility: hidden;
+    }
+
+    /* Filter: Medic */
+    #filter-medic:checked ~ section:nth-of-type(3) [data-category="realizare"],
+    #filter-medic:checked ~ section:nth-of-type(3) [data-category="conferinta"],
+    #filter-medic:checked ~ section:nth-of-type(3) [data-category="tehnologie"] {
+      display: none;
+      visibility: hidden;
+    }
+
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(24px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+  </style>
+
+  <script src="assets/js/script.js"></script>
+
 </body>
 </html>
