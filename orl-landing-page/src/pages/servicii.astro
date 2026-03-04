@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+const sorted = services.sort((a, b) => a.data.order - b.data.order);
+
+const accentColors: Record<string, string> = {
+  sky: 'bg-sky-500',
+  emerald: 'bg-emerald-500',
+  violet: 'bg-violet-500',
+};
+const hoverColors: Record<string, string> = {
+  sky: 'hover:border-sky-100',
+  emerald: 'hover:border-emerald-100',
+  violet: 'hover:border-violet-100',
+};
+const dotColors: Record<string, string> = {
+  sky: 'bg-sky-400',
+  emerald: 'bg-emerald-400',
+  violet: 'bg-violet-400',
+};
+---
+<BaseLayout title="Servicii ORL" activePage="servicii">
+
+  <section class="bg-gradient-to-br from-sky-50 via-white to-blue-50 pt-10 pb-12 md:pt-16 md:pb-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-bold tracking-widest uppercase text-sky-600 mb-2">Ce oferim</p>
+      <h1 class="font-display text-3xl md:text-5xl font-bold text-slate-900 max-w-2xl leading-tight mb-3">Serviciile Noastre ORL</h1>
+      <p class="text-slate-500 text-base md:text-lg max-w-xl leading-relaxed">Diagnosticare si tratament complet pentru afectiunile urechii, nasului, gatului si laringelui.</p>
+    </div>
+  </section>
+
+  <section class="py-10 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {sorted.map(service => (
+        <div class="mb-10 md:mb-16">
+          <div class="flex items-center gap-3 mb-5 md:mb-8">
+            <div class={`w-8 md:w-12 h-1 rounded-full ${accentColors[service.data.color]}`}></div>
+            <h2 class="font-display text-xl md:text-2xl font-bold text-slate-900">{service.data.title}</h2>
+          </div>
+          <div class="flex flex-col gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+            {service.data.items.map(item => (
+              <div class={`flex items-start gap-3 p-4 rounded-xl border border-slate-100 ${hoverColors[service.data.color]} hover:shadow-md transition-all sm:flex-col sm:gap-0 sm:p-6 sm:rounded-2xl`}>
+                <div class={`w-2 h-2 rounded-full mt-2 flex-shrink-0 sm:hidden ${dotColors[service.data.color]}`}></div>
+                <div>
+                  <h3 class="font-semibold text-sm text-slate-900 mb-0.5 sm:font-display sm:font-bold sm:text-lg sm:mb-2">{item.title}</h3>
+                  <p class="text-slate-500 text-xs leading-relaxed sm:text-sm">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16 bg-sky-600">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-white mb-3">Ai nevoie de un consult?</h2>
+      <p class="text-sky-100 mb-6 text-sm md:text-base">Programeaza-te online sau suna-ne direct.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/contact#programare" class="bg-white text-sky-600 hover:bg-sky-50 px-7 py-3.5 rounded-full font-bold transition-colors text-sm md:text-base">Programare online</a>
+        <a href="tel:+37322000000" class="border-2 border-white/40 text-white hover:bg-white/10 px-7 py-3.5 rounded-full font-semibold transition-colors text-sm md:text-base">+373 22 000 000</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
