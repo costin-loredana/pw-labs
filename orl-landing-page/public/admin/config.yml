@@ -1,0 +1,62 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/assets/images
+public_folder: /assets/images
+
+collections:
+  - name: news
+    label: Noutati
+    folder: src/content/news
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Titlu, name: title, widget: string }
+      - { label: Data, name: date, widget: string }
+      - label: Categorie
+        name: category
+        widget: select
+        options: [realizare, conferinta, tehnologie, medic]
+      - { label: Autor, name: author, widget: string }
+      - { label: Rezumat, name: excerpt, widget: text }
+      - { label: Continut, name: body, widget: markdown }
+
+  - name: doctors
+    label: Medici
+    folder: src/content/doctors
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Nume, name: name, widget: string }
+      - { label: Rol, name: role, widget: string }
+      - { label: Bio, name: bio, widget: text }
+      - { label: Ordine, name: order, widget: number, default: 0 }
+
+  - name: services
+    label: Servicii
+    folder: src/content/services
+    create: false
+    fields:
+      - { label: Titlu, name: title, widget: string }
+      - { label: Culoare, name: color, widget: string }
+      - { label: Ordine, name: order, widget: number }
+      - label: Proceduri
+        name: items
+        widget: list
+        fields:
+          - { label: Titlu, name: title, widget: string }
+          - { label: Descriere, name: description, widget: text }
+
+  - name: pages
+    label: Pagini
+    folder: src/content/pages
+    create: false
+    fields:
+      - { label: Titlu, name: title, widget: string }
+      - { label: Hero Label, name: heroLabel, widget: string, required: false }
+      - { label: Hero Descriere, name: heroDesc, widget: text, required: false }
+      - { label: Telefon, name: phone, widget: string, required: false }
+      - { label: Email, name: email, widget: string, required: false }
+      - { label: Adresa, name: address, widget: string, required: false }
+      - { label: Program, name: hours, widget: string, required: false }
