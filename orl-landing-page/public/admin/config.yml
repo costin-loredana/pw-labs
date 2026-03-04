@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: main
+  base_url: https://spital-repub-timofei-mosneaga.netlify.app
 
 media_folder: public/assets/images
 public_folder: /assets/images
