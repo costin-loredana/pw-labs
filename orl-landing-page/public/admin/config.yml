@@ -1,15 +1,14 @@
 backend:
   name: git-gateway
   branch: main
-  base_url: https://spital-repub-timofei-mosneaga.netlify.app
 
-media_folder: public/assets/images
+media_folder: orl-landing-page/public/assets/images
 public_folder: /assets/images
 
 collections:
   - name: news
     label: Noutati
-    folder: src/content/news
+    folder: orl-landing-page/src/content/news
     create: true
     slug: "{{slug}}"
     fields:
@@ -25,7 +24,7 @@ collections:
 
   - name: doctors
     label: Medici
-    folder: src/content/doctors
+    folder: orl-landing-page/src/content/doctors
     create: true
     slug: "{{slug}}"
     fields:
@@ -36,7 +35,7 @@ collections:
 
   - name: services
     label: Servicii
-    folder: src/content/services
+    folder: orl-landing-page/src/content/services
     create: false
     fields:
       - { label: Titlu, name: title, widget: string }
@@ -51,7 +50,7 @@ collections:
 
   - name: pages
     label: Pagini
-    folder: src/content/pages
+    folder: orl-landing-page/src/content/pages
     create: false
     fields:
       - { label: Titlu, name: title, widget: string }
