@@ -22,6 +22,7 @@ const navLinks = [
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css" />
   <link rel="stylesheet" href="/assets/css/orla.css" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body class="font-body text-slate-800 bg-white">
 
@@ -111,33 +112,46 @@ const navLinks = [
   </footer>
 
   <script>
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const bar1 = document.getElementById('bar1');
-  const bar2 = document.getElementById('bar2');
-  const bar3 = document.getElementById('bar3');
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 
-  if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-      const isHidden = mobileMenu.classList.toggle('hidden');
-      bar1.style.transform = isHidden ? '' : 'translateY(6px) rotate(45deg)';
-      bar2.style.opacity   = isHidden ? '' : '0';
-      bar3.style.transform = isHidden ? '' : 'translateY(-6px) rotate(-45deg)';
-    });
-  }
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
 
-  const form = document.getElementById('appointment-form') || document.getElementById('hero-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      if (btn) {
-        btn.textContent = 'Trimis! Va contactam in curand.';
-        btn.disabled = true;
-        btn.classList.replace('bg-sky-600', 'bg-emerald-600');
-      }
-    });
-  }
-</script>
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        bar1.style.transform = isHidden ? '' : 'translateY(6px) rotate(45deg)';
+        bar2.style.opacity   = isHidden ? '' : '0';
+        bar3.style.transform = isHidden ? '' : 'translateY(-6px) rotate(-45deg)';
+      });
+    }
+
+    const form = document.getElementById('appointment-form') || document.getElementById('hero-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        if (btn) {
+          btn.textContent = 'Trimis! Va contactam in curand.';
+          btn.disabled = true;
+          btn.classList.replace('bg-sky-600', 'bg-emerald-600');
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
